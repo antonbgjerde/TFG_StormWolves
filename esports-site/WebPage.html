@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Storm Wolves — Home (Boceto)</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/yourkitid.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root{
+      --bg:#0B0F19;
+      --card:#0F1724;
+      --muted:#A9B3C7;
+      --text:#E8EEF9;
+      --accent:#22D3EE;
+      --accent-2:#3B82F6;
+      --radius:14px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Arial,sans-serif;
+      background:linear-gradient(180deg,#04060a 0%, #071023 100%);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .container{
+      width:min(1200px,94%);
+      margin:0 auto;
+      padding:12px 0;
+    }
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:40;
+      background:rgba(7,16,32,.6);
+      backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(255,255,255,.03);
+    }
+
+    .header-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+    }
+
+    .brand img{
+      width:44px;
+      height:44px;
+      object-fit:cover;
+      border-radius:8px;
+    }
+
+    nav.main{
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+
+    nav.main a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    nav.main a:hover{color:var(--text)}
+
+    .cta{
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      border:0;
+      padding:9px 14px;
+      border-radius:999px;
+      color:#001018;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    /* Hero */
+    .hero{
+      padding:56px 0 36px;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:28px;
+      align-items:center;
+    }
+
+    .hero-left h1{
+      font-family:Orbitron,Inter,sans-serif;
+      font-size:clamp(30px,4vw,56px);
+      margin:0 0 10px;
+      line-height:0.98;
+    }
+
+    .hero-left p{
+      color:var(--muted);
+      margin:0 0 18px;
+      max-width:70ch;
+    }
+
+    .hero-cta{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .card-hero{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01));
+      padding:16px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.03);
+      color:var(--text);
+      cursor:pointer;
+    }
+
+    .score{
+      font-family:Orbitron,sans-serif;
+      font-size:30px;
+      font-weight:800;
+    }
+
+    /* Grid / sections */
+    .section{padding:26px 0}
+
+    .grid{
+      display:grid;
+      gap:14px;
+    }
+
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
+
+    .card{
+      background:var(--card);
+      padding:14px;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.03);
+      box-shadow:0 6px 20px rgba(0,0,0,.5);
+    }
+
+    /* Roster */
+    .roster-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+    }
+
+    .player{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:14px;
+      background:linear-gradient(180deg, rgba(255,255,255,.012), rgba(255,255,255,.006));
+      border-radius:12px;
+      cursor:pointer;
+    }
+
+    .player img{
+      width:120px;
+      height:120px;
+      border-radius:12px;
+      object-fit:cover;
+      border:4px solid rgba(34,211,238,.06);
+    }
+
+    .player h4{
+      margin:10px 0 4px;
+      font-size:16px;
+    }
+
+    .player p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* News / store */
+    .news-list .card{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      flex-direction:column;
+    }
+
+    .news-list img{
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      border-radius:8px;
+    }
+
+    .store-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+    }
+
+    .product img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      border-radius:8px;
+    }
+
+    .product .price{
+      color:var(--accent-2);
+      font-weight:800;
+    }
+
+    /* Partners */
+    .partners{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .partner{
+      width:140px;
+      height:64px;
+      background:rgba(255,255,255,.02);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:8px;
+      padding:8px;
+    }
+
+    .partner img{
+      max-width:110px;
+      max-height:44px;
+      object-fit:contain;
+    }
+
+    /* Footer */
+    footer{
+      border-top:1px solid rgba(255,255,255,.03);
+      padding:18px 0;
+      margin-top:30px;
+    }
+
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .social a{
+      color:var(--muted);
+      margin-right:12px;
+      text-decoration:none;
+    }
+
+    .small{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Responsive */
+    @media(max-width:1000px){
+      .hero{grid-template-columns:1fr}
+      .roster-grid{grid-template-columns:repeat(2,1fr)}
+      .grid.cols-3{grid-template-columns:repeat(2,1fr)}
+      .grid.cols-4{grid-template-columns:repeat(2,1fr)}
+      .store-grid{grid-template-columns:repeat(2,1fr)}
+    }
+
+    @media(max-width:560px){
+      .roster-grid{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr}
+      .store-grid{grid-template-columns:1fr}
+      nav.main{display:none}
+    }
+
+    /* Simple modal */
+    .modal{
+      position:fixed;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,.6);
+      padding:12px;
+    }
+
+    .modal.open{display:flex}
+
+    .modal .box{
+      width:min(820px,96%);
+      background:linear-gradient(180deg,#071023,#081629);
+      padding:18px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.04);
+    }
+
+    .close{
+      background:transparent;
+      border:0;
+      color:var(--muted);
+      font-size:18px;
+      cursor:pointer;
+      float:right;
+    }
+
+    .auth-panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.08));
+      border:1px solid rgba(255,255,255,.08);
+      padding:22px;
+      border-radius:18px;
+    }
+
+    .auth-tabs{
+      display:flex;
+      gap:10px;
+      margin-bottom:18px;
+      flex-wrap:wrap;
+    }
+
+    .auth-tab{
+      flex:1;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      cursor:pointer;
+      transition:all .2s ease;
+    }
+
+    .auth-tab.active{
+      background:var(--accent);
+      color:#001018;
+      border-color:transparent;
+    }
+
+    .auth-form{
+      display:none;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .auth-form.active{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .auth-input{
+      width:100%;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+    }
+
+    .auth-submit{
+      max-width:240px;
+    }
+
+    .auth-message{
+      color:var(--accent);
+      font-weight:700;
+      margin-bottom:12px;
+      min-height:20px;
+    }
+  </style>
+</head>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Mi página</title>
+  <link rel="icon" type="image/png" href="assets/img/logo.png">
+</head>
+
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <img src="assets/img/logo.png" alt="Storm Wolves logo">
+        <div>
+          <div style="font-weight:800">STORM WOLVES</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">Hunt in the Storm</div>
+        </div>
+      </a>
+
+      <nav class="main" aria-label="main nav">
+        <a href="#home">Home</a>
+        <a href="#roster">Roster</a>
+        <a href="#news">Noticias</a>
+        <a href="#store">Tienda</a>
+        <a href="#partners">Partners</a>
+        <!-- <button class="cta" onclick="document.getElementById('login').scrollIntoView({behavior:'smooth'})">Log In </button> -->
+        <button class="cta" onclick="showAuth('login')">Iniciar sesión</button>
+        <button class="cta" onclick="showAuth('register')">Registrarse</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="home">
+    <section class="hero">
+      <div class="hero-left">
+        <h1>Storm Wolves — Pack. Power. Precision.</h1>
+        <p>Equipo competitivo con roster internacional. Contenido semanal, entrenamientos y torneos. Tienda oficial con equipación exclusiva.</p>
+
+        <!-- <div class="hero-cta"> -->
+          <!-- <button class="cta" onclick="document.getElementById('roster').scrollIntoView({behavior:'smooth'})">Ver roster</button> -->
+          <!-- <button class="card-hero" onclick="document.getElementById('news').scrollIntoView({behavior:'smooth'})">Últimas noticias</button> -->
+        <!-- </div> -->
+
+        <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;">
+          <div class="card" style="flex:1;min-width:260px;">
+            <div style="color:var(--muted);font-size:13px">Último partido</div>
+            <div class="score">SW 2 — 1 BARCELONA</div>
+            <div style="color:var(--muted);margin-top:6px;font-size:13px">Resumen en noticias</div>
+          </div>
+
+          <div class="card" style="width:260px">
+            <div style="color:var(--muted);font-size:13px">Próximo stream</div>
+            <div style="font-weight:800;margin-top:6px">Twitch · Miércoles 21:00</div>
+            <div style="color:var(--muted);margin-top:6px;font-size:13px">Playthrough + Q&A</div>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card" style="text-align:center">
+          <div style="color:var(--muted);font-weight:700;margin-bottom:10px">Top Player</div>
+          <img src="assets/img/p1.png" alt="Top player" style="width:100%;height:220px;object-fit:cover;border-radius:10px;margin-bottom:10px">
+          <div style="font-weight:800">Ragnar</div>
+          <div style="color:var(--muted);font-size:13px">AWPer · 26 años</div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="roster" class="section">
+      <h2>Roster</h2>
+     <div style="margin:8px 0;color:var(--muted);font-size:14px">
+        Filtrar por rol:
+        <select id="roleFilter" style="margin-left:8px;padding:6px;border-radius:8px;background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.4)">
+          <option value="all">Todos</option>
+          <option value="entry">Entry</option>
+          <option value="support">Support</option>
+          <option value="awper">AWPer</option>
+        </select>
+      </div>
+
+      <div class="roster-grid" id="rosterGrid">
+        <div class="player" data-role="awper" onclick="openPlayer('Ragnar','AWPer','Top fragger','assets/img/p1.png')">
+          <img src="assets/img/p1.png" alt="Ragnar">
+          <h4>Ragnar</h4>
+          <p>AWPer · Islandia</p>
+        </div>
+
+        <div class="player" data-role="entry" onclick="openPlayer('Vex','Entry','Fragger principal','assets/img/p2.png')">
+          <img src="assets/img/p2.png" alt="Vex">
+          <h4>Vex</h4>
+          <p>Entry · España</p>
+        </div>
+
+        <div class="player" data-role="support" onclick="openPlayer('Nova','Support','In-game leader','assets/img/p3.png')">
+          <img src="assets/img/p3.png" alt="Nova">
+          <h4>Nova</h4>
+          <p>Support · UK</p>
+        </div>
+
+        <div class="player" data-role="support" onclick="openPlayer('Echo','Coach','Analyst','assets/img/p4.png')">
+          <img src="assets/img/p4.png" alt="Echo">
+          <h4>Echo</h4>
+          <p>Coach · España</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="section">
+      <h2>Últimas Noticias </h2>
+      <div class="grid cols-3 news-list">
+        <div class="card">
+          <img src="assets/img/news1.png" alt="Storm Wolves avanza a playoffs">
+          <div><strong>Storm Wolves avanza a playoffs</strong></div>
+          <div class="small">Victoria 2-1 ante Barcelona FC. Análisis del partido y MVP.</div>
+        </div>
+
+        <div class="card">
+          <img src="assets/img/partner5.png" alt="Nuevo sponsor técnico confirmado">
+          <div><strong>Nuevo sponsor técnico confirmado</strong></div>
+          <div class="small">Acuerdo con Under Armour para la temporada 2026.</div>
+        </div>
+
+        <div class="card">
+          <img src="assets/img/team.png" alt="Entrenamiento abierto">
+          <div><strong>Entrenamiento abierto: aprende con el equipo</strong></div>
+          <div class="small">Inscripciones para el día 20 abiertas.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="store" class="section">
+      <h2>Tienda</h2>
+      <div class="store-grid">
+        <div class="card product">
+          <img src="assets/img/prod1.png" alt="Camiseta oficial Storm Wolves">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <div>
+              <strong>Camiseta Oficial</strong>
+              <div class="small">Edición 2026</div>
+            </div>
+            <div class="price">€39.99</div>
+          </div>
+          <div style="margin-top:10px">
+            <button class="cta" onclick="openProduct('Camiseta Oficial','assets/img/prod1.png','€39.99')">Comprar</button>
+          </div>
+        </div>
+
+        <div class="card product">
+          <img src="assets/img/prod2.png" alt="Hoodie Pack">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <div>
+              <strong>Hoodie Pack</strong>
+              <div class="small">Entrega 7 días</div>
+            </div>
+            <div class="price">€54.99</div>
+          </div>
+          <div style="margin-top:10px">
+            <button class="cta" onclick="openProduct('Hoodie Pack','assets/img/prod2.png','€54.99')">Comprar</button>
+          </div>
+        </div>
+
+        <div class="card product">
+          <img src="assets/img/prod3.jpeg" alt="Mousepad XL">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <div>
+              <strong>Mousepad XL</strong>
+              <div class="small">Edición Storm</div>
+            </div>
+            <div class="price">€14.99</div>
+          </div>
+          <div style="margin-top:10px">
+            <button class="cta" onclick="openProduct('Mousepad XL','assets/img/prod3.jpeg','€14.99')">Comprar</button>
+          </div>
+        </div>
+
+        <div class="card product">
+          <img src="assets/img/prod4.jpeg" alt="Gorra de Beisbol">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <div>
+              <strong>Gorra de Beisbol</strong>
+              <div class="small">Edición Storm</div>
+            </div>
+            <div class="price">€19.99</div>
+          </div>
+          <div style="margin-top:10px">
+            <button class="cta" onclick="openProduct('Silla Gamer','assets/img/prod4.jpeg','€19.99')">Comprar</button>
+          </div>
+        </div>
+          <div class="card product">
+          <img src="assets/img/prod5.jpeg" alt="Silla Gamer">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <div>
+              <strong>Silla Gamer</strong>
+              <div class="small">Edición Storm</div>
+            </div>
+            <div class="price">€99.99</div>
+          </div>
+          <div style="margin-top:10px">
+            <button class="cta" onclick="openProduct('Silla Gamer','assets/img/prod5.jpeg','€99.99')">Comprar</button>
+          </div>
+        </div>
+          <div class="card product">
+          <img src="assets/img/prod6.jpeg" alt="Taza Oficial">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <div>
+              <strong>Taza Oficial</strong>
+              <div class="small">Edición Storm</div>
+            </div>
+            <div class="price">€14.99</div>
+          </div>
+          <div style="margin-top:10px">
+            <button class="cta" onclick="openProduct('Taza Oficial','assets/img/prod6.jpeg','€14.99')">Comprar</button>
+          </div>
+        </div>
+          <div class="card product">
+          <img src="assets/img/prod7.jpeg" alt="Jersey Oficial">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <div>
+              <strong>Jersey Oficial</strong>
+              <div class="small">Edición Storm</div>
+            </div>
+            <div class="price">€44.99</div>
+          </div>
+          <div style="margin-top:10px">
+            <button class="cta" onclick="openProduct('Jersey Oficial','assets/img/prod7.jpeg','€44.99')">Comprar</button>
+          </div>       
+        </div>
+          <div class="card product">
+          <img src="assets/img/prod8.jpeg" alt="Llavero Oficial">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <div>
+              <strong>Llavero Oficial</strong>
+              <div class="small">Edición Storm</div>
+            </div>
+            <div class="price">€4.99</div>
+          </div>
+          <div style="margin-top:10px">
+            <button class="cta" onclick="openProduct('Llavero Oficial','assets/img/prod8.jpeg','€4.99')">Comprar</button>
+          </div>    
+          </div>
+          <div class="card product">
+          <img src="assets/img/prod9.jpeg" alt="ArmSleeve Oficial">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <div>
+              <strong>ArmSleeve Oficial</strong>
+              <div class="small">Edición Storm</div>
+            </div>
+            <div class="price">€14.99</div>
+          </div>
+          <div style="margin-top:10px">
+            <button class="cta" onclick="openProduct('ArmSleeve Oficial','assets/img/prod9.jpeg','€14.99')">Comprar</button>
+          </div>    
+        </div>  
+        
+      </div>
+    </section>
+
+<section id="partners" class="section">
+  <h2>Partners</h2>
+  <div class="partners">
+    <a href="https://www.razer.com" target="_blank" rel="noopener noreferrer" class="partner">
+      <img src="assets/img/partner1.png" alt="Partner 1">
+    </a>
+
+    <a href="https://www.redbull.com" target="_blank" rel="noopener noreferrer" class="partner">
+      <img src="assets/img/partner2.png" alt="Partner 2">
+    </a>
+
+    <a href="https://www.noblechairs.com" target="_blank" rel="noopener noreferrer" class="partner">
+      <img src="assets/img/partner3.png" alt="Partner 3">
+    </a>
+
+    <a href="https://www.hotwheels.com" target="_blank" rel="noopener noreferrer" class="partner">
+      <img src="assets/img/partner4.png" alt="Partner 4">
+    </a>
+
+    <a href="https://www.underarmour.com" target="_blank" rel="noopener noreferrer" class="partner">
+      <img src="assets/img/partner5.png" alt="Partner 5">
+    </a>
+  </div>
+</section>
+
+    <section class="section">
+      <h2>Stream</h2>
+      <div class="card" style="padding:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start">
+        <div style="flex:1;min-width:280px">
+          <div style="background:#000;height:260px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--muted)">
+            Aquí va el embed de Twitch / vídeo
+          </div>
+        </div>
+
+        <div style="width:320px">
+          <div style="font-weight:800">Próximo stream</div>
+          <div class="small" style="margin-top:8px">Miércoles 21:00 · Entrenamiento abierto</div>
+          <div style="margin-top:14px">
+            <button class="cta" onclick="window.open('https://www.twitch.tv','_blank')">Ver canal</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container footer-inner">
+        <div>
+          <div style="font-weight:800">Storm Wolves</div>
+          <div class="small">Equipo competitivo · Merch · Streams · Eventos</div>
+        </div>
+
+        <div style="text-align:right">
+          <div class="social">
+            <a href="#" class="small">Instagram</a> ·
+            <a href="#" class="small">Twitter</a> ·
+            <a href="#" class="small">Twitch</a>
+          </div>
+          <div class="small" style="margin-top:6px">© <span id="y"></span> Storm Wolves</div>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <div class="modal" id="authModal" aria-hidden="true">
+    <div class="box">
+      <button class="close" onclick="closeModal('authModal')">✕</button>
+      <div class="auth-panel">
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="tabLogin" onclick="showAuth('login')">Iniciar sesión</button>
+          <button class="auth-tab" id="tabRegister" onclick="showAuth('register')">Registrarse</button>
+        </div>
+
+        <div id="authMessage" class="auth-message"></div>
+
+        <form id="loginForm" class="auth-form active" onsubmit="return false;">
+          <input class="auth-input" id="loginEmail" type="email" placeholder="Correo electrónico" required>
+          <input class="auth-input" id="loginPassword" type="password" placeholder="Contraseña" required>
+          <button class="cta auth-submit" onclick="loginUser()">Entrar</button>
+        </form>
+
+        <form id="registerForm" class="auth-form" onsubmit="return false;">
+          <input class="auth-input" id="registerUsername" type="text" placeholder="Nombre de usuario" required>
+          <input class="auth-input" id="registerAge" type="number" min="13" placeholder="Edad" required>
+          <input class="auth-input" id="registerEmail" type="email" placeholder="Correo electrónico" required>
+          <input class="auth-input" id="registerPassword" type="password" placeholder="Contraseña" required>
+          <input class="auth-input" id="registerConfirmPassword" type="password" placeholder="Confirmar contraseña" required>
+          <button class="cta auth-submit" onclick="registerUser()">Crear cuenta</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="playerModal" aria-hidden="true">
+    <div class="box">
+      <button class="close" onclick="closeModal()">✕</button>
+      <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
+        <img id="pmImg" src="" alt="" style="width:200px;height:200px;object-fit:cover;border-radius:10px">
+        <div style="flex:1">
+          <h3 id="pmName">Nombre</h3>
+          <div id="pmRole" class="small">Rol</div>
+          <p id="pmDesc">Descripción breve del jugador.</p>
+          <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+            <button class="cta" onclick="window.open('https://www.twitch.tv','_blank')">Ver stream</button>
+            <button class="card-hero" style="border:0" onclick="alert('Contacto enviado')">Contactar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="productModal" aria-hidden="true">
+    <div class="box">
+      <button class="close" onclick="closeModal('productModal')">✕</button>
+      <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap">
+        <img id="prodImg" src="" alt="" style="width:200px;height:200px;object-fit:cover;border-radius:8px">
+        <div style="flex:1">
+          <h3 id="prodName">Producto</h3>
+          <div id="prodPrice" style="color:var(--accent-2);font-weight:800">€0.00</div>
+          <p class="small" style="margin-top:10px">Descripción rápida del producto y características.</p>
+          <div style="margin-top:12px">
+            <button class="cta" onclick="alert('Simulación compra')">Comprar ahora</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    function openPlayer(name, role, desc, img){
+      document.getElementById('pmName').textContent = name;
+      document.getElementById('pmRole').textContent = role;
+      document.getElementById('pmDesc').textContent = desc;
+      document.getElementById('pmImg').src = img;
+      document.getElementById('playerModal').classList.add('open');
+    }
+
+    function openProduct(name, img, price){
+      document.getElementById('prodName').textContent = name;
+      document.getElementById('prodImg').src = img;
+      document.getElementById('prodPrice').textContent = price;
+      document.getElementById('productModal').classList.add('open');
+    }
+
+    function closeModal(id = 'playerModal'){
+      document.getElementById(id).classList.remove('open');
+    }
+
+    document.getElementById('roleFilter').addEventListener('change', (e) => {
+      const val = e.target.value;
+      document.querySelectorAll('#rosterGrid .player').forEach(p => {
+        p.style.display = (val === 'all' || p.dataset.role === val) ? 'flex' : 'none';
+      });
+    });
+
+    function showAuth(tab) {
+      document.getElementById('authModal').classList.add('open');
+      document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+      document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+      document.getElementById('loginForm').classList.toggle('active', tab === 'login');
+      document.getElementById('registerForm').classList.toggle('active', tab === 'register');
+      document.getElementById('authMessage').textContent = '';
+    }
+
+    function showAuthMessage(message, isError = false) {
+      const authMessage = document.getElementById('authMessage');
+      authMessage.textContent = message;
+      authMessage.style.color = isError ? '#f97316' : 'var(--accent)';
+    }
+
+    async function registerUser() {
+      const username = document.getElementById('registerUsername').value.trim();
+      const age = document.getElementById('registerAge').value;
+      const email = document.getElementById('registerEmail').value.trim();
+      const password = document.getElementById('registerPassword').value;
+      const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+      if (password !== confirmPassword) {
+        showAuthMessage('Las contraseñas no coinciden.', true);
+        return;
+      }
+
+      try {
+        const response = await fetch('register.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({username, age, email, password})
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          showAuthMessage(data.error || 'No se pudo registrar el usuario.', true);
+          return;
+        }
+
+        showAuthMessage('Cuenta creada. Revisa tu correo para verificar tu cuenta.');
+        document.getElementById('registerForm').reset();
+      } catch (error) {
+        showAuthMessage('Error de conexión. Intenta de nuevo.', true);
+      }
+    }
+
+    async function loginUser() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      try {
+        const response = await fetch('login.php', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({email, password})
+        });
+
+        const data = await response.json();
+        if (!response.ok) {
+          showAuthMessage(data.error || 'No se pudo iniciar sesión.', true);
+          return;
+        }
+
+        showAuthMessage('Has iniciado sesión correctamente. ¡Bienvenido!');
+        document.getElementById('loginForm').reset();
+      } catch (error) {
+        showAuthMessage('Error de conexión. Intenta de nuevo.', true);
+      }
+    }
+  </script>
+</body>
+</html>

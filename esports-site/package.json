@@ -1,0 +1,17 @@
+{
+  "name": "esports-site",
+  "version": "1.0.0",
+  "description": "Backend para autenticación local, registro y confirmación por correo",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "nodemailer": "^6.9.4",
+    "sqlite3": "^5.1.6"
+  }
+}
